@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" 
+             xmlns:viewModels="clr-namespace:InstagramApp.ViewModels"
+             xmlns:behaviors="clr-namespace:InstagramApp.Behaviors"
+             mc:Ignorable="d"
+             x:Name="Photos"
+             x:Class="InstagramApp.PhotosPage"
+             Style="{StaticResource GeneralPageStyle}">
+
+    <StackLayout Margin="0,7,0,0">
+
+        <Grid Margin="5,5,5,15" RowSpacing="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+
+
+            </Grid.RowDefinitions>
+            <Button 
+                Grid.Row="0" 
+                Style="{StaticResource RegularButtonStyle}" 
+                Text="new photo!"
+                Command="{Binding NewPhotoCommand}"/>
+            <Button 
+                x:Name="LoadPhoto"
+                Grid.Row="1" 
+                Style="{StaticResource RegularButtonStyle}" 
+                Text="Load"
+                Command="{Binding LoadCommand}"/>
+            <Button
+                Grid.Row="2"
+                Style="{StaticResource RegularButtonStyle}"
+                Text="My friends!"
+                Command="{Binding GoToContacts}"/>
+        </Grid>
+
+        <controls:FlowListView x:Name="PhotoFlowListView"
+                            SelectedItem="{Binding SelectedPhoto, Mode=TwoWay}"
+                            FlowColumnCount="3" 
+                            HorizontalOptions="StartAndExpand"                           
+                            SeparatorVisibility="Default" 
+                            RowHeight="160"
+                            FlowItemsSource="{Binding Photos}"
+                            SelectionMode="Single">
+
+
+            <controls:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="3">
+                        <Image
+                            Source="{Binding PhotoUrl}" 
+                            Style="{StaticResource PhotoStyle}"
+                            VerticalOptions="FillAndExpand">
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+
+                            <TapGestureRecognizer  Command="{Binding Source={x:Reference Photos},Path=BindingContext.PhotoSelectedCommand }"  CommandParameter="{Binding .}" />
+
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </controls:FlowListView.FlowColumnTemplate>
+        </controls:FlowListView>
+
+        
+    </StackLayout>
+      
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.Pages.RegisterPage"
+             Style="{StaticResource GeneralPageStyle}">
+
+    <!--<ContentPage.Resources>
+        <local:AnyNullValueCheckConverter x:Key="AnyNullValueCheckConverter" />
+    </ContentPage.Resources>-->
+
+
+    <StackLayout>
+        <StackLayout Margin="5,70,5,5" Padding="15" Spacing="20">
+            <StackLayout Orientation="Horizontal" Spacing="40">
+                <Entry x:Name="FirstnameEntry" Placeholder="Firstname" Text="{Binding Firstname}" />
+                <Entry x:Name="LastnameEntry" Placeholder="Lastname" Text="{Binding Lastname}"/>
+            </StackLayout>
+            <Entry x:Name="PasswordEntry" 
+               Text="{Binding Password}"
+               Placeholder="Password" 
+               IsPassword="True"/>
+            <Entry x:Name="ConfirmPasswordEntry"
+               Text="{Binding ConfirmPassword}"
+               Placeholder="Confirm Password"
+               IsPassword="True"/>
+            <Entry Placeholder="Date of Birth"/>
+            <Entry x:Name="EmailEntry" Placeholder="Email" Text="{Binding Email}"/>
+            <StackLayout Orientation="Horizontal" Spacing="50" Padding="5,5,5,140">
+                <Label Text="Save Password" FontSize="Medium"/>
+                <Switch IsToggled="False" OnColor="Purple"/>
+            </StackLayout>
+            
+        </StackLayout>
+
+        <StackLayout Margin="0,0,0,3">
+            <Button Text="Sign Up"
+                    Clicked="SignUpButtonClicked"
+                Style="{StaticResource SignUpButtonStyle}"
+                Command="{Binding SignUpCommand}">
+                
+            </Button>
+            <!--<Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource AnyNullValueCheckConverter}">
+                        <Binding Path="Email" />
+                        <Binding Path="Password" />
+                    </MultiBinding>
+                </Button.IsEnabled>-->
+        </StackLayout>
+
+    </StackLayout>
+    
+    
+</ContentPage>

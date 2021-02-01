@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:InstagramApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.Pages.InfoPage"
+             Style="{StaticResource GeneralPageStyle}">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="StackLayout">
+                <Setter Property="Padding" Value="20,0,0,15"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <TableView>
+        <TableRoot>
+            <TableSection Title="Personal Info">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Full Name" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="" HorizontalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Date of Birth"/>
+                        <Label Text=""/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Email"/>
+                        <Label Text=""/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+
+            <TableSection Title="Profile Info">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Contacts"/>
+                        <Label Text="{Binding CounterContact}" HorizontalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Photos"/>
+                        <Label Text="{Binding CounterPhoto}" HorizontalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

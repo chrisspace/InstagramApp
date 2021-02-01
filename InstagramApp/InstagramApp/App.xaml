@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converter="clr-namespace:InstagramApp.Converter"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converter:ItemTappedConverter x:Key="LocalItemTappedConverter"></converter:ItemTappedConverter>
+
+
+            <Style x:Key="GeneralPageStyle" TargetType="Page">
+                <Setter Property="NavigationPage.HasNavigationBar" Value="False"></Setter>
+            </Style>
+                    
+            <Style x:Key="RegularButtonStyle" TargetType="Button">
+                
+                <Setter Property="BackgroundColor" Value="Purple"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="HorizontalOptions" Value="Fill"></Setter>
+                <Setter Property="Margin" Value="-10,-7,-10,-6" ></Setter>
+            </Style>
+           
+            <Style x:Key="SignUpButtonStyle" TargetType="Button" BasedOn="{StaticResource RegularButtonStyle}">
+                
+
+            </Style>
+
+            <Style x:Key="RegularLabelStyle" TargetType="Label">
+                <Setter Property="Padding" Value="30,10,0,0"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+
+            <Style x:Key="PhotoStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFill"></Setter>
+            </Style>
+
+            <Style x:Key="BaseLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+                <Setter Property="BackgroundColor" Value="Purple"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+            </Style>
+            
+            <Style x:Key="SmallLabelStyle" TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="Margin" Value="2,2,10,2"></Setter>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"></Setter>
+                <Setter Property="FontSize" Value="Small"></Setter>
+            </Style>
+
+            <Style x:Key="MediumLabel" TargetType="Label"
+                   BasedOn="{d:StaticResource BaseLabelStyle}">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+            </Style>
+
+            <Style x:Key="LargeLabel" TargetType="Label"
+                   BasedOn="{d:StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize" Value="Large"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

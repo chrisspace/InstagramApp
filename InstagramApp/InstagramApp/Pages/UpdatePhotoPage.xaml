@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:viewmodels="clr-namespace:InstagramApp.ViewModels"
+             x:Class="InstagramApp.Pages.UpdatePhotoPage"
+             Style="{StaticResource GeneralPageStyle}">
+
+    <StackLayout Margin="0,18,0,3">
+        <StackLayout>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        Grid.Row="0" 
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="CenterAndExpand" 
+                        Text="Update Your Photo!" 
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        TextColor="Purple">
+                    </Label>
+                    <ic:CircleImage Source="{Binding SelectedPhoto.PhotoUrl}"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                            WidthRequest="200"
+                            HeightRequest="300"
+                            Aspect="AspectFill"              
+                            Margin="5" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.Column="0" 
+                        Text="Photo Url"
+                        Style="{StaticResource RegularLabelStyle}">
+                    </Label>
+                    <Entry 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Placeholder="Photo Url"
+                        Text="{Binding SelectedPhoto.PhotoUrl, Mode=TwoWay}"
+                        Style="{StaticResource EntryStyle}">
+                    </Entry>
+                    <Label 
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Description"
+                        Style="{StaticResource RegularLabelStyle}">
+                    </Label>
+                    <Entry 
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Placeholder="Description"
+                        Text="{Binding SelectedPhoto.Description, Mode=TwoWay}"
+                        Style="{StaticResource EntryStyle}">
+                    </Entry>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Location"
+                        Style="{StaticResource RegularLabelStyle}">
+                    </Label>
+                    <Entry
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Placeholder="Location"
+                        Text="{Binding SelectedPhoto.Location, Mode=TwoWay}"
+                        Style="{StaticResource EntryStyle}">
+                    </Entry>
+
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+
+        <StackLayout Margin="0,60,0,0" Spacing="15">
+            <Button Text="Delete"
+                    Command="{Binding DeleteCommand}"
+                    Style="{StaticResource RegularButtonStyle}">
+            </Button>
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}"
+                    Style="{StaticResource RegularButtonStyle}">
+            </Button>
+        </StackLayout>
+
+
+    </StackLayout>
+
+</ContentPage>

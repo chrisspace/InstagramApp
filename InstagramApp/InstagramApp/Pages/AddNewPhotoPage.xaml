@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:InstagramApp.ViewModels"
+             xmlns:behaviors="clr-namespace:InstagramApp.Behaviors"
+             x:Class="InstagramApp.Pages.AddNewPhotoPage"
+             Style="{StaticResource GeneralPageStyle}">
+    
+    
+    <StackLayout Margin="0,18,0,3">
+        <StackLayout>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        Grid.Row="0" 
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="CenterAndExpand" 
+                        Text="New Photo!" 
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        TextColor="Purple">
+                    </Label>
+                    <ic:CircleImage Source=""
+                            WidthRequest="200"
+                            HeightRequest="300"
+                            Aspect="AspectFill"              
+                            Margin="5" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.Column="0" 
+                        Text="Photo Url"
+                        Style="{StaticResource RegularLabelStyle}">
+                    </Label>
+                    <Entry 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Placeholder="Photo Url"
+                        Text="{Binding Photo.ImageUrl}"
+                        Style="{StaticResource EntryStyle}">
+                    </Entry>
+                    <Label 
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Description"
+                        Style="{StaticResource RegularLabelStyle}">
+                    </Label>
+                    <Entry 
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Placeholder="Description"
+                        
+                        Style="{StaticResource EntryStyle}">
+                    </Entry>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Location"
+                        Style="{StaticResource RegularLabelStyle}">
+                    </Label>
+                    <Entry
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Placeholder="Location"
+                        Text="{Binding Photo.Location,Mode=TwoWay}"
+                        Style="{StaticResource EntryStyle}">
+                    </Entry>
+                    
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+
+        <StackLayout Margin="0,100,0,0">
+            <Button Text="Save"
+                    Command="{Binding SavePhotoCommand}"
+                    Style="{StaticResource RegularButtonStyle}">
+            </Button>
+        </StackLayout>
+
+
+    </StackLayout>
+</ContentPage>

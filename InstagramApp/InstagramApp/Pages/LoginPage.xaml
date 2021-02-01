@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:behaviors="clr-namespace:InstagramApp.Behaviors"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.LoginPage"
+             Style="{StaticResource GeneralPageStyle}">
+    <StackLayout >
+        <Grid  Margin="20" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ic:CircleImage Source="nafpaktosPhoto.jpg"
+                        WidthRequest="230"
+                        HeightRequest="350"
+                        Aspect="AspectFill"
+               Grid.Row="0" 
+               Grid.ColumnSpan="2" 
+               Margin="10" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center"/>
+
+            <Label Margin="20"
+               Text="Welcome to new Instagram"
+               FontSize="Large"
+               TextColor="Purple"
+               Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Email"
+               Grid.Row="2"
+               Grid.Column="0"
+               Style="{StaticResource RegularLabelStyle}"
+               />
+
+            <Label Text="Password"
+               Grid.Row="3"
+               Grid.Column="0"
+               Style="{StaticResource RegularLabelStyle}"
+               />
+
+            <Entry x:Name="Email"
+                   Text="{Binding Email}"
+               Placeholder="Enter your email"
+                  
+               Grid.Row="2"
+               Grid.Column="1"
+               Style="{StaticResource EntryStyle}">
+                <Entry.Behaviors>
+                    <behaviors:EmailValidationBehavior/>
+                </Entry.Behaviors>
+            </Entry>
+
+
+
+            <Label x:Name="LoginModel_UsernameError" 
+                IsVisible="False" TextColor="Red"/>
+
+            <Entry x:Name = "Password" Text="{Binding Password}" 
+               IsPassword="True"
+               Placeholder="Enter your password"               
+               Grid.Row="3"
+               Grid.Column="1"
+               Style="{StaticResource EntryStyle}"/>
+
+            <Label x:Name="LoginModel_PasswordError" 
+                IsVisible="False" TextColor="Red"/>
+        </Grid>
+
+        <StackLayout Spacing="22"
+                     Margin="2,22,2,10">
+            <Button Text="Login"                
+                    Style="{StaticResource RegularButtonStyle}" 
+                    Command="{Binding LoginCommand}">
+            </Button>
+            <Button Text="Register" 
+                    Command="{Binding RegisterCommand}"
+                    Style="{StaticResource RegularButtonStyle}">
+
+            </Button>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

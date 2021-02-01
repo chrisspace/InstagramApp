@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewModels="clr-namespace:InstagramApp.ViewModels"
+             xmlns:behaviors="clr-namespace:InstagramApp.Behaviors"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.ContactsPage"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Style="{StaticResource GeneralPageStyle}"> 
+    
+    
+
+    <StackLayout>
+        <StackLayout>
+            <SearchBar x:Name="Search"                      
+                       Placeholder="Search..."  
+                       PlaceholderColor="Gray" CancelButtonColor="Orange"
+                       TextChanged="Search_TextChanged"
+                       >
+                <!--SearchCommand="{Binding SearchTextBarChangedCommand}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"-->
+                <SearchBar.Behaviors>
+                    <behaviors:TextChangedBehavior  />
+                </SearchBar.Behaviors>
+            </SearchBar>
+        </StackLayout>
+        <Grid Margin="0,10,0,0">
+            <Grid.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped"/>
+            </Grid.GestureRecognizers>
+            <ListView  
+                  CachingStrategy="RecycleElement" 
+                  ItemsSource="{Binding Contacts}"
+                  VerticalOptions="FillAndExpand"
+                  HasUnevenRows="True"
+                  x:Name="mainList"
+                  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="2,2,0,2" BackgroundColor="Purple"  RowSpacing="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ic:CircleImage Grid.Row="0" Grid.Column="0" 
+                                                WidthRequest="60" HeightRequest="60" 
+                                                Margin="8,2,1,2"
+                                                Aspect="AspectFill" Source="{Binding ImageUrl}"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource MediumLabel}"></Label>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Description}" Style="{StaticResource SmallLabelStyle}"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <StackLayout Margin="0,0,0,10">
+            <Button Text="Go to your profile!"
+                    Command="{Binding GoingToPhotosCommand}"
+                    Style="{StaticResource RegularButtonStyle}">
+            </Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
